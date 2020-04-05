@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- load properties file -->
+    <context:property-placeholder location="classpath:sport.properties"/>
+    <!-- Define your beans here -->
+    <bean id="HappyFortune"
+          class="com.sakerini.springdemo.HappyFortuneService">
+    </bean>
+    <bean id="BadFortune"
+          class="com.sakerini.springdemo.BadFortuneService">
+    </bean>
+    <bean id="NormalFortune"
+          class="com.sakerini.springdemo.NormalFortuneService">
+    </bean>
+    <bean id="RandomFortune"
+          class="com.sakerini.springdemo.RandomFortuneService">
+        <property name="fortunes">
+                <list>
+                    <ref bean="HappyFortune"/>
+                    <ref bean="BadFortune"/>
+                    <ref bean="NormalFortune"/>
+                </list>
+        </property>
+    </bean>
+
+    <bean id="BasketCoach"
+          class="com.sakerini.springdemo.BasketCoach">
+          <!-- set up constructor injections -->
+        <constructor-arg ref="HappyFortune" />
+    </bean>
+
+    <bean id="FootballCoach"
+          class="com.sakerini.springdemo.FootballCoach">
+        <constructor-arg ref="BadFortune"/>
+    </bean>
+    <bean id="VolleyCoach"
+          class ="com.sakerini.springdemo.VolleyballCoach">
+        <property name="fortuneService" ref="RandomFortune" />
+        <property name="emailAdress" value="${coach.email}" />
+        <property name="teamName" value="${coach.team}" />
+    </bean>
+
+</beans>
+
+
+
+
+
