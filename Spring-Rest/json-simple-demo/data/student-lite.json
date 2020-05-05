@@ -1,0 +1,11 @@
+{
+  "firstName": "Alexandr",
+  "lastName": "Chaushev",
+  "age": 20,
+  "address": {
+    "city": "Smolyan",
+    "country": "Bulgaria",
+    "zipcode": "4700"
+  },
+  "languages": ["Java", "C", "C++", "Python"]
+}
