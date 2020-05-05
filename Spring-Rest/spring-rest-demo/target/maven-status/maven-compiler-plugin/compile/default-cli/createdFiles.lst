@@ -1,0 +1,3 @@
+com/sakerini/springrestdemo/rest/DemoRestController.class
+com/sakerini/springrestdemo/config/DemoAppConfig.class
+com/sakerini/springrestdemo/config/MySpringMvcDispatcherServletInitializer.class
